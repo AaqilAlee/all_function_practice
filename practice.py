@@ -50,7 +50,6 @@ for day in all_days:
 
 # select country
 select_element = driver.find_element(By.ID, "country")
-
 # Create a Select object
 dropdown = Select(select_element)
 
@@ -63,6 +62,35 @@ time.sleep(2)
 # Optional: verify which option is selected
 selected = dropdown.first_selected_option.text
 print("Selected country:", selected)
+
+
+
+#<-------- select colors ------->
+select_element = driver.find_element(By.ID, "colors")
+
+# Create a Select object
+dropdown = Select(select_element)
+
+# Select "Green" by visible text
+dropdown.select_by_visible_text("Green")
+
+# Optional: Verify which options are selected
+selected = [opt.text for opt in dropdown.all_selected_options]
+print("Selected colors:", selected)
+
+#<-------- select animal ------->
+select_element = driver.find_element(By.ID, "animals")
+
+# Create a Select object
+dropdown = Select(select_element)
+
+# Select "Green" by visible text
+dropdown.select_by_visible_text("Cheetah")
+
+# Optional: Verify which options are selected
+selected = [opt.text for opt in dropdown.all_selected_options]
+print("Selected colors:", selected)
+
 
 # Scroll into view
 # driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", next_page)
