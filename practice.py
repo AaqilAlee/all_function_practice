@@ -49,13 +49,20 @@ for day in all_days:
             checkbox.click()
 
 # select country
-select_element = wait.until(
-    EC.presence_of_element_located(
-        (By.NAME, "billing_state")
-    )
-)
+select_element = driver.find_element(By.ID, "country")
+
+# Create a Select object
 dropdown = Select(select_element)
-dropdown.select_by_visible_text("Bagerhat")
+
+# Select Canada by visible text
+dropdown.select_by_visible_text("Canada")
+
+# Pause to see the result
+time.sleep(2)
+
+# Optional: verify which option is selected
+selected = dropdown.first_selected_option.text
+print("Selected country:", selected)
 
 # Scroll into view
 # driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", next_page)
