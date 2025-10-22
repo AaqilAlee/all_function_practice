@@ -92,6 +92,23 @@ selected = [opt.text for opt in dropdown.all_selected_options]
 print("Selected colors:", selected)
 
 
+#<-------- Locate the date picker 1 ------->
+date_field = driver.find_element(By.ID, "datepicker")
+date_field.click()
+
+date_input = driver.find_element(By.XPATH, "//a[@data-date='1']")
+date_input.click()
+
+
+#<-------- Locate the date picker 2 ------->
+date_field2 = driver.find_element(By.ID, "txtDate")
+date_field2.click()
+
+date_input2 = driver.find_element(By.XPATH, "//a[@data-date='23']")
+date_input2.click()
+
+
+
 # Scroll into view
 # driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", next_page)
 # Optional: hover over the element before clicking
@@ -120,5 +137,5 @@ print("Selected colors:", selected)
 # delivery_checkbox.click()
 
 
-time.sleep(4)
+time.sleep(5)
 driver.quit()
