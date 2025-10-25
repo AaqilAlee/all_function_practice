@@ -26,16 +26,36 @@ username.send_keys("mamun")
 user_mail = driver.find_element(By.ID, "email")
 user_mail.send_keys("mytestautomation@gmail.com")
 
+#<-------- search item ------->
+search_item = driver.find_element(By.ID, "Wikipedia1_wikipedia-search-input")
+search_item.send_keys("book")
+
+search_button = driver.find_element(By.XPATH, "//input[@class='wikipedia-search-button']")
+search_button.click()
+
 phone_number = driver.find_element(By.ID, "phone")
 phone_number.send_keys("0123456789")
 
 address = driver.find_element(By.ID, "textarea")
 address.send_keys("Mirpur 10")
 
+
+#<-------- dynamic button ------->
+button_start = driver.find_element(By.NAME, "start")
+button_start.click()
+time.sleep(2)
+button_stop = driver.find_element(By.NAME, "stop")
+button_stop.click()
+
+#<-------- gender ------->
 gender = driver.find_element(By.ID, "male")
 gender.click()
 
-# select checkbox
+#<-------- Alerts & Popups ------->
+simple_alert = driver.find_element(By.ID, "alertBtn")
+simple_alert.click()
+
+#<-------- select checkbox ------->
 days = ["sunday", "monday"]  # days to select
 all_days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
@@ -109,8 +129,14 @@ date_input2.click()
 
 
 
+
+
+
+
+
+
 # Scroll into view
-# driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", next_page)
+# driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", button_start)
 # Optional: hover over the element before clicking
 # actions = ActionChains(driver)
 # actions.move_to_element(next_page).perform()
