@@ -12,12 +12,15 @@ from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.common.action_chains import ActionChains
 
 
+
+
 # --- Start browser ---
 service = Service(r"F:\drivers\chromedriver-win64\chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
 driver.get('https://testautomationpractice.blogspot.com/')
 driver.maximize_window()
+time.sleep(2)
 
 # select author
 username = driver.find_element(By.ID, "name")
@@ -26,12 +29,15 @@ username.send_keys("mamun")
 user_mail = driver.find_element(By.ID, "email")
 user_mail.send_keys("mytestautomation@gmail.com")
 
-#<-------- search item ------->
+#<-------- search item Start------->
+
 search_item = driver.find_element(By.ID, "Wikipedia1_wikipedia-search-input")
 search_item.send_keys("book")
 
 search_button = driver.find_element(By.XPATH, "//input[@class='wikipedia-search-button']")
 search_button.click()
+
+#<-------- search item End------->
 
 phone_number = driver.find_element(By.ID, "phone")
 phone_number.send_keys("0123456789")
@@ -40,76 +46,47 @@ address = driver.find_element(By.ID, "textarea")
 address.send_keys("Mirpur 10")
 
 
-#<-------- dynamic button ------->
+#<-------- dynamic button start------->
+
 button_start = driver.find_element(By.NAME, "start")
 button_start.click()
 time.sleep(2)
 button_stop = driver.find_element(By.NAME, "stop")
 button_stop.click()
 
+#<-------- dynamic button start------->
+
 #<-------- gender ------->
 gender = driver.find_element(By.ID, "male")
 gender.click()
 
 #<-------- Alerts & Popups ------->
-simple_alert = driver.find_element(By.ID, "alertBtn")
-simple_alert.click()
+# simple_alert = driver.find_element(By.ID, "alertBtn")
+# simple_alert.click()
 
 #<-------- select checkbox ------->
-days = ["sunday", "monday"]  # days to select
-all_days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
-for day in all_days:
-    checkbox = driver.find_element(By.ID, day)
-    if day in days:
-        if not checkbox.is_selected():
-            checkbox.click()
-    else:
-        if checkbox.is_selected():
-            checkbox.click()
 
-# select country
+#<-------- select country part ------->
+
 select_element = driver.find_element(By.ID, "country")
-# Create a Select object
 dropdown = Select(select_element)
-
-# Select Canada by visible text
 dropdown.select_by_visible_text("Canada")
-
-# Pause to see the result
 time.sleep(2)
 
-# Optional: verify which option is selected
-selected = dropdown.first_selected_option.text
-print("Selected country:", selected)
+#<-------- select country part end ------->
 
+#<-------- select colors part ------->
 
-
-#<-------- select colors ------->
 select_element = driver.find_element(By.ID, "colors")
-
-# Create a Select object
 dropdown = Select(select_element)
-
-# Select "Green" by visible text
 dropdown.select_by_visible_text("Green")
 
-# Optional: Verify which options are selected
-selected = [opt.text for opt in dropdown.all_selected_options]
-print("Selected colors:", selected)
 
-#<-------- select animal ------->
+#<-------- select animal part ------->
 select_element = driver.find_element(By.ID, "animals")
-
-# Create a Select object
 dropdown = Select(select_element)
-
-# Select "Green" by visible text
 dropdown.select_by_visible_text("Cheetah")
-
-# Optional: Verify which options are selected
-selected = [opt.text for opt in dropdown.all_selected_options]
-print("Selected colors:", selected)
 
 
 #<-------- Locate the date picker 1 ------->
@@ -128,39 +105,21 @@ date_input2 = driver.find_element(By.XPATH, "//a[@data-date='23']")
 date_input2.click()
 
 
+#<-------- single File upload ------->
+file_upload = driver.find_element(By.ID, "singleFileInput")
+driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", file_upload)
+time.sleep(1)
+file_upload.send_keys(r"C:\Users\User\Downloads\cv\Mamun_ali.pdf")
+
+#<-------- Multiple File upload ------->
+multi_file_upload = driver.find_element(By.ID, "multipleFilesInput")
+files_to_upload =[
+    r"C:\Users\User\Downloads\cv\Mamun_ali.pdf",
+    r"C:\Users\User\Downloads\cv\intern_Mamun_Ali.pdf"
+]
+multi_file_upload.send_keys("\n".join(files_to_upload))
 
 
-
-
-
-
-
-# Scroll into view
-# driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", button_start)
-# Optional: hover over the element before clicking
-# actions = ActionChains(driver)
-# actions.move_to_element(next_page).perform()
-# next_page.click()
-
-
-# name of area
-# select_area = wait.until(
-#     EC.presence_of_element_located(
-#         (By.NAME, "billing_area")
-#     )
-# )
-# # select_element.click()
-# dropdown = Select(select_area)
-# dropdown.select_by_value("221")
-
-
-# delivery checkbox
-# delivery_checkbox = wait.until(
-#     EC.presence_of_element_located(
-#         (By.XPATH, "//input[@id='gift_paper']")
-#     )
-# )
-# delivery_checkbox.click()
 
 
 time.sleep(5)
