@@ -11,4 +11,4 @@
 10. Price range
 11. Scrolling DropDown
 12. Pagination
-13. Upload Files
+13. File Upload 
