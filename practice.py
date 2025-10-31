@@ -127,10 +127,20 @@ files_to_upload =[
     r"C:\Users\User\Downloads\cv\Mamun_ali.pdf",
     r"C:\Users\User\Downloads\cv\intern_Mamun_Ali.pdf"
 ]
+driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", multi_file_upload)
+time.sleep(1)
 multi_file_upload.send_keys("\n".join(files_to_upload))
 
+#<-------- drag and drop part ------->
+drag_source = driver.find_element(By.ID, "draggable")
+drop_target = driver.find_element(By.ID, "droppable")
 
+# Perform drag and drop action
+actions = ActionChains(driver)
+actions.drag_and_drop(drag_source, drop_target).perform()
 
+# Wait to see the result
+time.sleep(3)
 
 time.sleep(5)
 driver.quit()
