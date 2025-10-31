@@ -104,6 +104,16 @@ date_field2.click()
 date_input2 = driver.find_element(By.XPATH, "//a[@data-date='23']")
 date_input2.click()
 
+#<-------- Locate the date picker 2 end ------->
+
+#<-------- mouse over part ------->
+element_to_hover = driver.find_element(By.XPATH, "//button[@class='dropbtn' and text()='Point Me']")
+actions = ActionChains(driver)
+actions.move_to_element(element_to_hover).perform()
+time.sleep(5)
+
+#<-------- mouse over part ------->
+
 
 #<-------- single File upload ------->
 file_upload = driver.find_element(By.ID, "singleFileInput")
